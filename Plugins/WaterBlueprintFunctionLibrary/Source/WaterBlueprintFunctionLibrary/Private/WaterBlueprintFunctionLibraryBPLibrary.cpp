@@ -4,6 +4,7 @@
 #include "WaterBlueprintFunctionLibrary.h"
 #include "WaterBodyActor.h"
 #include "WaterWaves.h"
+#include "GerstnerWaterWaves.h"
 #include "Kismet/GameplayStatics.h"
 
 UWaterBlueprintFunctionLibraryBPLibrary::UWaterBlueprintFunctionLibraryBPLibrary(const FObjectInitializer& ObjectInitializer)
@@ -12,15 +13,11 @@ UWaterBlueprintFunctionLibraryBPLibrary::UWaterBlueprintFunctionLibraryBPLibrary
 
 }
 
-void UWaterBlueprintFunctionLibraryBPLibrary::ChangeWaterWaveAsset(UObject* WorldContextObject, AWaterBody* CurrentWaterBody, const FString& WaveAssetFolder,  const FString& WaveAssetName)
+UWaterWaves* UWaterBlueprintFunctionLibraryBPLibrary::LoadWaterWaveAssetFile (const FString& WaveAssetFolder,  const FString& WaveAssetName)
 {
-	FString FullPath = WaveAssetFolder + "/" + WaveAssetName;
-
+	const FString FullPath = WaveAssetFolder + "/" + WaveAssetName;; 
 	UWaterWavesAsset* WaterWavesRef = LoadObject<UWaterWavesAsset>(nullptr, const_cast<TCHAR*>(*FullPath));
-	// UWaterWavesAsset* WaterWavesRef = LoadObject<UWaterWavesAsset>(nullptr, TEXT("/Water/Waves/Dan_GerstnerWaves_Lake.Dan_GerstnerWaves_Lake"));
-	//AActor* FoundActor  = UGameplayStatics::GetActorOfClass(WorldContextObject,ActorClass);
-	//AWaterBody* CurrentWaterBody = Cast<AWaterBody>(FoundActor);
-	CurrentWaterBody->SetWaterWaves(WaterWavesRef->GetWaterWaves());
+	return WaterWavesRef->GetWaterWaves();
 }
 
 void UWaterBlueprintFunctionLibraryBPLibrary::RecalcWaveData(UObject* WorldContextObject, UGerstnerWaterWaves* GerstnerWaterWaves)
