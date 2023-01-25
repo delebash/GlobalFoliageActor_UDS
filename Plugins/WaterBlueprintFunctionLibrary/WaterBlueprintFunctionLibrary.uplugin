@@ -19,6 +19,12 @@
 			"Name": "WaterBlueprintFunctionLibrary",
 			"Type": "Runtime",
 			"LoadingPhase": "PreLoadingScreen"
+		},
+	],
+	"Plugins": [
+		{
+			"Name": "Water",
+			"Enabled": true
 		}
 	]
 }
