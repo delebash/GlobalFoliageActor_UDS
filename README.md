@@ -1,3 +1,6 @@
+# Deprecated in favor of Global Environmental System (GES) https://github.com/delebash/UE_GlobalEnvironmentalSystem
+
+
 # Unreal Engine 5.1 GlobalFoliageActor
 
 This system integrates Ultra Dynamic Sky Weather with Megascan Foliage, Trees, and Props.  
